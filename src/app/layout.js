@@ -1,6 +1,6 @@
 import localFont from 'next/font/local' 
 const myFont = localFont({
-  src: './fonts/NotoSans-Regular.ttf',
+  src: '../../fonts/NotoSans-Regular.ttf',
 })
 
 import "./globals.css";

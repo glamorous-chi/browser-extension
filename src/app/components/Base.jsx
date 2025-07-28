@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 
@@ -12,6 +13,7 @@ const Base = () => {
           className="w-36 lg:w-36"
           width={200}
           height={200}
+          priority
         />
       </div>
       
