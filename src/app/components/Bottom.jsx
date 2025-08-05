@@ -1,28 +1,49 @@
 "use client";
 import React from "react";
-import Card from "./Card";
+import { useState } from "react";
+import Active from "./Active";
+import Inactive from "./Inactive";
+import All from "./All";
 
 const Bottom = () => {
+  // const [tab, setTab] = useState("All");
+  const [activeTab, setActiveTab] = useState("All");
+
+  const tabClass = (tab) =>
+    `rounded-full px-6 py-3 text-center cursor-pointer text-white ${
+      activeTab === tab ? "bg-red-600 text-slate-300" : "bg-slate-800 text-white"
+    }`;
+
   return (
     <>
       <div className="flex flex-col lg:flex-row gap-4 lg:justify-between p-4 rounded-lg items-center">
         <h1 className="text-3xl">Extensions List</h1>
 
         <div className="flex gap-3 items-center text-sm">
-          <div className="bg-slate-800 rounded-full px-6 py-3 text-center">
+          <button
+            onClick={() => setActiveTab("All")}
+            className= {tabClass('All')}>
             All
-          </div>
-          <div className="bg-red-600 rounded-full px-5 py-3 text-center">
+          </button>
+          <button
+            onClick={() => setActiveTab("Active")}
+            className= {tabClass('Active')}
+          >
             Active
-          </div>
-          <div className="bg-slate-800 rounded-full px-5 py-3 text-center">
+          </button>
+          <button
+            onClick={() => setActiveTab("Inactive")}
+            className= {tabClass('Inactive')}
+          >
             Inactive
-          </div>
+          </button>
         </div>
       </div>
 
       <div>
-        <Card/>
+        {activeTab === "All" && <All />}
+        {activeTab === "Active" && <Active />}
+        {activeTab === "Inactive" && <Inactive />}
       </div>
     </>
   );
